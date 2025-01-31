@@ -1,0 +1,6 @@
+discord.py-self
+colorama
+requests
+asyncio
+python-dotenv
+aiohttp
