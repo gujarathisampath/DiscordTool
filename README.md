@@ -119,8 +119,7 @@ While the tool is safe, it may violate Discord's ToS. Use with caution.
 </details>
 
 <details>
-<summary>Can it clone private channels?</summary>
-Yes, if you have proper permissions in both servers.
+Yes, you only need administrative permissions in the target server where you want to create the clone.
 </details>
 
 ## ⚖️ License

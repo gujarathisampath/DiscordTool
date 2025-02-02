@@ -1,4 +1,4 @@
-discord.py-self
+discordtool
 colorama
 requests
 asyncio

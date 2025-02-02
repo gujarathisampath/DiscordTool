@@ -20,7 +20,7 @@ options = {
 
 setup(
     name = "Discord Tool",
-    version = "1.1.0", 
+    version = "1.1.1", 
     description = 'Discord Server Cloning Tool - Allows copying server channels, roles, settings and emojis to a new server',
     author = 'Sampath',
     executables = executables,

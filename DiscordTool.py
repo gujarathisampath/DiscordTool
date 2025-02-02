@@ -8,28 +8,12 @@ import asyncio
 from colorama import Fore, init, Style
 from datetime import datetime
 from time import sleep
-import requests
-import getpass
 
-os.system('cls' if os.name == 'nt' else 'clear')
+def get_input(prompt):
+    return input(f'{prompt}\n{Fore.MAGENTA}>{Fore.RESET}')
 
-print(f'''{Fore.RED}
-╔═══════════════════════════════════════════════════════════════════╗
-║                                                                   ║
-║                     Discord Server Cloner v1.1.0                  ║
-║                                                                   ║
-║                     Developer: Sampath                            ║
-║                     GitHub: @gujarathisampath                     ║
-║                                                                   ║
-╚═══════════════════════════════════════════════════════════════════╝{Style.RESET_ALL}''')
-
-print(f'{Fore.RED}[WARNING]{Style.RESET_ALL} This tool is against Discord Terms of Service.')
-print(f'{Fore.RED}[WARNING]{Style.RESET_ALL} Using this tool may result in account termination.')
-print(f'{Fore.RED}[WARNING]{Style.RESET_ALL} Excessive use of this tool will increase the risk of detection.')
-print(f'{Fore.RED}[WARNING]{Style.RESET_ALL} Use this tool at your own risk.\n')
-
-print(f'{Fore.YELLOW}[NOTE]{Style.RESET_ALL} Community features must be enabled to clone forum and announcement channels.')
-print(f'{Fore.YELLOW}[NOTE]{Style.RESET_ALL} Some features might not work due to Discord API limitations.\n')
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def print_add(message):
     print(f'{Fore.GREEN}[+]{Style.RESET_ALL} {message}')
@@ -44,6 +28,24 @@ def print_warning(message):
 def print_error(message):
     print(f'{Fore.RED}[ERROR]{Style.RESET_ALL} {message}')
 
+clear_screen()
+print(f'''{Fore.RED}
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║                     Discord Server Cloner v1.1.1                  ║
+║                                                                   ║
+║                     Developer: Sampath                            ║
+║                     GitHub: @gujarathisampath                     ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝{Style.RESET_ALL}''')
+
+print_error('This tool is against Discord Terms of Service.')
+print_error('Using this tool may result in account termination.')
+print_error('Excessive use of this tool will increase the risk of detection.')
+print_error('Use this tool at your own risk.\n')
+
+print(f'{Fore.YELLOW}[NOTE]{Style.RESET_ALL} Community features must be enabled to clone forum and announcement channels.')
+print(f'{Fore.YELLOW}[NOTE]{Style.RESET_ALL} Some features might not work due to Discord API limitations.\n')
 
 class Clone:
     @staticmethod
@@ -147,16 +149,14 @@ class Clone:
                     overwrites_to[role] = value
                 try:
                     
-                    if channel_text.type == channel_fourm:
-                        print('Bruh')
-                    
-                    new_channel = await guild_to.create_text_channel(
-                        name=channel_text.name,
-                        overwrites=overwrites_to,
-                        position=channel_text.position,
-                        topic=channel_text.topic,
-                        slowmode_delay=channel_text.slowmode_delay,
-                        nsfw=channel_text.nsfw)
+                    if channel_text.type != channel_fourm:
+                        new_channel = await guild_to.create_text_channel(
+                            name=channel_text.name,
+                            overwrites=overwrites_to,
+                            position=channel_text.position,
+                            topic=channel_text.topic,
+                            slowmode_delay=channel_text.slowmode_delay,
+                            nsfw=channel_text.nsfw)
                     
                 except:
                     new_channel = await guild_to.create_text_channel(
@@ -315,11 +315,6 @@ class Clone:
             
 
 bot = discord.Client()
-def get_input(prompt):
-    return input(f'{prompt}\n{Fore.MAGENTA}>{Fore.RESET}')
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def display_menu():
     menu_options = [
@@ -347,7 +342,7 @@ clear_screen()
 
 display_menu()
 option = input(f'{Fore.MAGENTA}>{Fore.RESET}')
-os.system('cls' if os.name == 'nt' else 'clear')
+clear_screen()
 messages_count = input(f'Do you want to copy messages from the guild? (Type 0 for No, or enter a number for Yes):\n {Fore.MAGENTA}>{Fore.RESET}')
 if messages_count == "0":
     messages_count = None
@@ -407,7 +402,7 @@ async def on_ready():
 {Style.RESET_ALL}''')
     await asyncio.sleep(5)
     
-os.system('cls' if os.name == 'nt' else 'clear')
+clear_screen()
 try:
     bot.run(token, bot=False)
 except discord.errors.LoginFailure:
